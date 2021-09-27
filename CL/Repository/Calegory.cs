@@ -1,4 +1,5 @@
-﻿using CL.Interface;
+﻿using CL.Common;
+using CL.Interface;
 using CL.Model;
 using CL.Utility;
 using Dapper;
@@ -14,14 +15,12 @@ namespace CL.Repository
 {
     public class Calegory: ICategory
     {
-        
-        internal IDbConnection DbConnection => new SqlConnection(ConnectionStrings.ConnString);
         public async Task<IEnumerable<CategoryModel>> GetCategory()
         {
             using (SqlConnection dbCon = new SqlConnection(ConnectionStrings.ConnString))
             {
                 dbCon.Open();
-                var result= await dbCon.QueryAsync<CategoryModel>("GetCategory", null, commandType: CommandType.StoredProcedure);
+                var result= await dbCon.QueryAsync<CategoryModel>(StoreProcedureName.sp_GetCategory, null, commandType: CommandType.StoredProcedure);
                 return result;
             }
         }
