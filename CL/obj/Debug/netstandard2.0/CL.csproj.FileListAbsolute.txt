@@ -1,9 +1,0 @@
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.AssemblyInfoInputs.cache
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.AssemblyInfo.cs
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.csproj.CoreCompileInputs.cache
-E:\ASP.NET Core\First\CL\bin\Debug\netstandard2.0\CL.deps.json
-E:\ASP.NET Core\First\CL\bin\Debug\netstandard2.0\CL.dll
-E:\ASP.NET Core\First\CL\bin\Debug\netstandard2.0\CL.pdb
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.dll
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.pdb
-E:\ASP.NET Core\First\CL\obj\Debug\netstandard2.0\CL.csprojAssemblyReference.cache
