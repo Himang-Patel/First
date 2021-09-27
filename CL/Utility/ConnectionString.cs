@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CL.Utility
 {
-    public class ConnectionString
+    public class ConnectionStrings
     {
-        public string ConnString { get; set; }
+        public static string ConnString { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using CL.Model;
+﻿using CL.Interface;
+using CL.Model;
 using CL.Utility;
 using Dapper;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace CL.Repository
 {
-    public class Calegory
+    public class Calegory: ICategory
     {
-        private readonly ConnectionString _connectionString;
-
-        internal IDbConnection DbConnection => new SqlConnection(_connectionString.ConnString);
-        public Task<IEnumerable<CategoryModel>> GetCategory()
+        
+        internal IDbConnection DbConnection => new SqlConnection(ConnectionStrings.ConnString);
+        public async Task<IEnumerable<CategoryModel>> GetCategory()
         {
-            using (IDbConnection dbCon = DbConnection)
+            using (SqlConnection dbCon = new SqlConnection(ConnectionStrings.ConnString))
             {
                 dbCon.Open();
-                return dbCon.QueryAsync<CategoryModel>("GetCategory", null, commandType: CommandType.StoredProcedure);
+                var result= await dbCon.QueryAsync<CategoryModel>("GetCategory", null, commandType: CommandType.StoredProcedure);
+                return result;
             }
         }
     }
