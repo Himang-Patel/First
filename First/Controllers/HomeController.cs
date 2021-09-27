@@ -12,17 +12,14 @@ namespace First.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ICategory _category;
-        public HomeController(ILogger<HomeController> logger, ICategory category)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _category = category;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            IEnumerable<CategoryModel> result = await _category.GetCategory();
-            return View(result);
+            return View();
         }
 
         public IActionResult Privacy()
