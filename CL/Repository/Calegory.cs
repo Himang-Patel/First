@@ -34,5 +34,18 @@ namespace CL.Repository
                 return await dbCon.ExecuteScalarAsync<int>(StoreProcedureName.sp_RemoveCategory, parameters, commandType: CommandType.StoredProcedure);
             }
         }
+        public async Task<int> AddCategory(CategoryModel categoryModel)
+        {
+            using (SqlConnection dbCon = new SqlConnection(ConnectionStrings.ConnString))
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Id", categoryModel.Id, DbType.Int32);
+                parameters.Add("@Name", categoryModel.Name, DbType.String);
+                parameters.Add("@DisplayOrder", categoryModel.DisplayOrder, DbType.Int32);
+
+                var result = await dbCon.ExecuteScalarAsync<int>(StoreProcedureName.sp_UpsertCategory, parameters, commandType: CommandType.StoredProcedure);
+                return result;
+            }
+        }
     }
 }

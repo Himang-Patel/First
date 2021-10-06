@@ -21,6 +21,25 @@ namespace First.Controllers
             IEnumerable<CategoryModel> result = await _category.GetCategory();
             return View(result);
         }
+        public async Task<IActionResult> Create(int id)
+        {
+            IEnumerable<CategoryModel> result = await _category.GetCategory();
+            return View(result.Where(x => x.Id == id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(CategoryModel categoryModel)
+        {
+            //string isEmailExists = await _personService.CheckEmailExists(addPersonModel.EmailAddress);
+            //if (!string.IsNullOrEmpty(isEmailExists))
+            //{
+            //    response.ResponseMessage = Constant.EmailAlreadyExists;
+            //    return Conflict(response);
+            //}
+            var personId = await _category.AddCategory(categoryModel);
+
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public async Task<IActionResult> DeleteEmployee(int id)

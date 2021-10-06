@@ -10,5 +10,6 @@ namespace CL.Interface
     {
         Task<IEnumerable<CategoryModel>> GetCategory();
         Task<int> DeleteCategory(int id);
+        Task<int> AddCategory(CategoryModel categoryModel);
     }
 }

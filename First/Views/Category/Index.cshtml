@@ -5,7 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Category</h1>
+
+<div class="row">
+    <div class="col-6">
+        <h1>Category</h1>
+    </div>
+    <div class="col-6">
+        <a asp-controller="Category" asp-action="Create">
+            Create Category
+        </a>
+    </div>
+</div>
 
 <table class="table table-striped">
     <thead>
@@ -36,7 +46,7 @@
                     @Html.DisplayFor(modelItem => item.DisplayOrder)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", "Upsert", null, new { @class = "btn btn-md btn-primary" }) |
+                    @Html.ActionLink("Edit", "Create", "Category", new { @id = item.Id }, new { @class = "btn btn-md btn-primary" }) |
                     @Html.ActionLink("Delete", "DeleteEmployee", "Category", new { @id = item.Id }, new { @class = "btn btn-md btn-danger" })
                 </td>
             </tr>
