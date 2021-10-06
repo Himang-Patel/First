@@ -19,6 +19,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DisplayOrder)
             </th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +34,10 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DisplayOrder)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Upsert", null, new { @class = "btn btn-md btn-primary" }) |
+                    @Html.ActionLink("Delete", "DeleteEmployee", "Category", new { @id = item.Id }, new { @class = "btn btn-md btn-danger" })
                 </td>
             </tr>
         }

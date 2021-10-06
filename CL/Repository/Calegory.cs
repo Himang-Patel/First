@@ -13,15 +13,25 @@ using System.Threading.Tasks;
 
 namespace CL.Repository
 {
-    public class Calegory: ICategory
+    public class Calegory : ICategory
     {
         public async Task<IEnumerable<CategoryModel>> GetCategory()
         {
             using (SqlConnection dbCon = new SqlConnection(ConnectionStrings.ConnString))
             {
                 dbCon.Open();
-                var result= await dbCon.QueryAsync<CategoryModel>(StoreProcedureName.sp_GetCategory, null, commandType: CommandType.StoredProcedure);
+                var result = await dbCon.QueryAsync<CategoryModel>(StoreProcedureName.sp_GetCategory, null, commandType: CommandType.StoredProcedure);
                 return result;
+            }
+        }
+        public async Task<int> DeleteCategory(int Id)
+        {
+            using (SqlConnection dbCon = new SqlConnection(ConnectionStrings.ConnString))
+            {
+                dbCon.Open();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Id", Id, DbType.Int32);
+                return await dbCon.ExecuteScalarAsync<int>(StoreProcedureName.sp_RemoveCategory, parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }

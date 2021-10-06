@@ -9,5 +9,6 @@ namespace CL.Interface
    public interface ICategory
     {
         Task<IEnumerable<CategoryModel>> GetCategory();
+        Task<int> DeleteCategory(int id);
     }
 }

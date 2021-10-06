@@ -21,5 +21,25 @@ namespace First.Controllers
             IEnumerable<CategoryModel> result = await _category.GetCategory();
             return View(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            IEnumerable<CategoryModel> result = await _category.GetCategory();
+            return View(result.Where(x => x.Id == id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Remove(int id)
+        {
+            try
+            {
+                await _category.DeleteCategory(id);
+            }
+            catch (Exception)
+            {
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
